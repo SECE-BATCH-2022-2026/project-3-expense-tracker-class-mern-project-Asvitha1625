@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose')
 const app = express();
-const port = 3000;
+const cors = require("cors")
+const port = 3300;
 
 
 mongoose.connect('mongodb://localhost:27017/expense-tracker');
@@ -16,6 +17,7 @@ const Expense = mongoose.model('Expense',expenseScheme);
 
 app.use(express.json());
 app.use(express.static('public'));
+app.use(cors());
 
 
 app.get('/api/expenses', async(req, res) => {
